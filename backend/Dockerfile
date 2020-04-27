@@ -1,4 +1,7 @@
-FROM openjdk:11-oracle
+FROM openjdk:8-jdk-alpine
 VOLUME /tmp
-COPY target/*.jar app.jar
-ENTRYPOINT ["java", "-jar","/app.jar", "--spring.profiles.active=docker"]
+ARG DEPENDENCY=target/dependency
+COPY ${DEPENDENCY}/BOOT-INF/lib /app/lib
+COPY ${DEPENDENCY}/META-INF /app/META-INF
+COPY ${DEPENDENCY}/BOOT-INF/classes /app
+ENTRYPOINT ["java","-Denv=prod","-cp","app:app/lib/*","net.surfm.account.Application",">","/console.log"]

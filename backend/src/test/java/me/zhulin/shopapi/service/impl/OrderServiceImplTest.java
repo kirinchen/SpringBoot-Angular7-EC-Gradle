@@ -1,12 +1,11 @@
 package me.zhulin.shopapi.service.impl;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.Assert.*;
 
-/**
- * Created By Zhu Lin on 1/4/2019.
- */
+
+@SpringBootTest
 public class OrderServiceImplTest {
 
     @Test

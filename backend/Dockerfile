@@ -4,4 +4,4 @@ ARG DEPENDENCY=target/dependency
 COPY ${DEPENDENCY}/BOOT-INF/lib /app/lib
 COPY ${DEPENDENCY}/META-INF /app/META-INF
 COPY ${DEPENDENCY}/BOOT-INF/classes /app
-ENTRYPOINT ["java","-Denv=prod","-cp","app:app/lib/*","net.surfm.account.Application",">","/console.log"]
+ENTRYPOINT ["java","-Denv=prod","-cp","app:app/lib/*","me.zhulin.shopapi.ShopApiApplication",">","/console.log"]

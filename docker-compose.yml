@@ -1,18 +1,19 @@
 version: '2'
 services:
   db:
-    image: postgres:9.4.5
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
   backend:
-    build: backend/.
+    image: com.kirin.ec/backend
     ports: 
       - "8080:8080"
-    depends_on:
+    depends_on: 
       - db
   frontend:
-    build: frontend/.
+    image: com.kirin.ec/frontend
     ports: 
       - "80:80"
     depends_on: 
